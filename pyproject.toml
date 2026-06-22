@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conmem"
+version = "0.1.0"
+description = "ConMem — Trajectory-to-Memory Conditioning Module for Multi-Agent Systems"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = { text = "MIT" }
+
+dependencies = [
+  "numpy>=1.24,<2.3",
+  "requests>=2.31,<3.0",
+  "python-dotenv>=1.0,<2.0",
+  "PyYAML>=6.0,<7.0",
+  "networkx>=3.2,<4.0",
+  "openai>=1.30,<3.0",
+]
+
+[project.optional-dependencies]
+local_model = [
+  "vllm>=0.8,<0.19",
+]
+
+hf_local = [
+  "torch>=2.5,<2.11",
+  "transformers>=4.51,<5.0",
+  "accelerate>=0.30,<2.0",
+]
+
+datasets = [
+  "datasets>=2.14,<5.0",
+  "tqdm>=4.66,<5.0",
+]
+
+pddl = [
+  "pddlgym>=0.0.7,<0.1",
+  "nltk>=3.8,<4.0",
+  "gym<0.27",
+]
+
+qa = [
+  "datasets>=2.14,<5.0",
+  "faiss-cpu>=1.7,<2.0",
+  "Flask>=3.0,<4.0",
+  "tqdm>=4.66,<5.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["mas_core*", "utils*", "interactions*", "data*", "common*"]
